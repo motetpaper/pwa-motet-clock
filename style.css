@@ -20,6 +20,7 @@ a:hover {
 }
 
 center {
+  user-select: none;	
   opacity: 0;
 }
 
