@@ -15,14 +15,14 @@ const checks = document.querySelectorAll('input[type=checkbox]');
 
 // preferences
 const prefs = {};
-prefs.blink = localStorage['prefs-dotdot-blink'] == 'true'
+prefs.blink = !!localStorage['prefs-dotdot-blink'];
 
 checks.forEach((a)=>{
-  a.checked = localStorage[a.id] == 'true';
+  a.checked = !!localStorage[a.id];
   a.onchange = (evt)=>{
-      localStorage[evt.target.id] = evt.target.checked;
-      prefs.blink = evt.target.checked;
-//      console.log('prefs-dotdot-blink: ', evt.target.checked);
+      localStorage[evt.target.id] = !!evt.target.checked;
+      prefs.blink = !!evt.target.checked;
+      console.log('prefs-dotdot-blink: ', !!evt.target.checked);
   }
 });
 
@@ -32,23 +32,22 @@ setInterval(function() {
   const s = dt.toLocaleTimeString('en-GB');  // 00:00:00
   const [hh, mm, ss] = s.split(':');
 
-  (+ss % 2) ? showDots(true) : showDots(false);
+  if(prefs.blink) {
+   (+ss % 2) ? showDots(true) : showDots(false);
+  }
+
 
   updateClock([hh,mm,ss]);
 }, 500);
 
-// updates the clock time
+// updates the clock time, given hh-mm-ss array
 function updateClock(arr) {
   panel.style.opacity = 1;
-  arr.forEach((a,i)=>hhmmss[i].innerText=arr[i])
+  arr.forEach((a,i)=>hhmmss[i].innerText=arr[i]);
 }
 
 // shows clock separators, if given true;
 // otherwise, hides them
 function showDots(show) {
-  if(prefs.blink) {
-    dotdot.forEach((a)=>a.style.opacity=show+0)
-  } else {
-    dotdot.forEach((a)=>a.style.opacity=1)
-  }
+  dotdot.forEach((a)=>a.style.opacity=show+0);
 }
