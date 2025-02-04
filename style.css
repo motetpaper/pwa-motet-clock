@@ -44,3 +44,10 @@ center {
 	font-size: 12pt;
 	text-align: auto;
 }
+
+@media (orientation: portrait) and (width < 500px) {
+  body {
+		  font-size: 32pt:
+		}
+}
+
