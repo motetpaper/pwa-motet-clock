@@ -45,7 +45,7 @@ center {
 	text-align: auto;
 }
 
-@media (orientation: portrait) and (width < 500px) {
+@media (orientation: portrait) and (max-width: 500px) {
   body {
 		  font-size: 32pt:
   }
