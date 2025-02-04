@@ -22,6 +22,7 @@ checks.forEach((a)=>{
   a.onchange = (evt)=>{
       localStorage[evt.target.id] = !!evt.target.checked;
       prefs.blink = !!evt.target.checked;
+      showDots(true);
       console.log('prefs-dotdot-blink: ', !!evt.target.checked);
   }
 });
