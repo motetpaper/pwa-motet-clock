@@ -48,6 +48,6 @@ center {
 @media (orientation: portrait) and (width < 500px) {
   body {
 		  font-size: 32pt:
-		}
+  }
 }
 
